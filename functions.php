@@ -244,12 +244,12 @@ add_action( 'login_enqueue_scripts', function() {
     ?>
     <style>
     :root {
-        --accent: #6fcf97;
-        --bg:     #0c0c0a;
-        --surface:#151513;
-        --border: rgba(111,207,151,.12);
-        --fg:     #d4d4c8;
-        --fg-sec: #7a7a6e;
+        --accent: #16a34a;
+        --bg:     #f7f7f3;
+        --surface:#eeeee9;
+        --border: rgba(22,163,74,.18);
+        --fg:     #18181a;
+        --fg-sec: #5a5a52;
     }
     body.login { background: var(--bg) !important; font-family: 'JetBrains Mono', monospace !important; }
     body.login #login { padding: 0 !important; width: 380px !important; }
@@ -269,7 +269,7 @@ add_action( 'login_enqueue_scripts', function() {
         background: var(--surface) !important;
         border: 1px solid var(--border) !important;
         border-radius: 4px !important;
-        box-shadow: 0 8px 32px rgba(0,0,0,.6) !important;
+        box-shadow: 0 4px 24px rgba(0,0,0,.08) !important;
         padding: 28px 32px !important;
     }
     body.login label { color: var(--fg-sec) !important; font-size: 11px !important; font-weight: 400 !important; letter-spacing: .08em !important; text-transform: uppercase !important; }
@@ -277,7 +277,7 @@ add_action( 'login_enqueue_scripts', function() {
     body.login input[type=password],
     body.login input[type=email] {
         background: var(--bg) !important;
-        border: 1px solid var(--border) !important;
+        border: 1px solid rgba(0,0,0,.12) !important;
         border-radius: 2px !important;
         color: var(--fg) !important;
         font-family: 'JetBrains Mono', monospace !important;
@@ -289,14 +289,14 @@ add_action( 'login_enqueue_scripts', function() {
     body.login input[type=password]:focus,
     body.login input[type=email]:focus {
         border-color: var(--accent) !important;
-        box-shadow: 0 0 0 2px rgba(111,207,151,.15) !important;
+        box-shadow: 0 0 0 2px rgba(22,163,74,.12) !important;
         outline: none !important;
     }
     body.login .button-primary {
-        background: transparent !important;
-        border: 1px solid var(--accent) !important;
+        background: var(--accent) !important;
+        border: none !important;
         border-radius: 2px !important;
-        color: var(--accent) !important;
+        color: #fff !important;
         font-family: 'JetBrains Mono', monospace !important;
         font-size: 13px !important;
         font-weight: 500 !important;
@@ -306,7 +306,7 @@ add_action( 'login_enqueue_scripts', function() {
         text-shadow: none !important;
         letter-spacing: .04em !important;
     }
-    body.login .button-primary:hover { background: var(--accent) !important; color: var(--bg) !important; }
+    body.login .button-primary:hover { background: #15803d !important; }
     body.login #nav a, body.login #backtoblog a { color: var(--fg-sec) !important; font-size: 12px !important; }
     body.login #nav a:hover, body.login #backtoblog a:hover { color: var(--accent) !important; }
     body.login #login_error, body.login .message {
