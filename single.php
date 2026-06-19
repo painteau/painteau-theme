@@ -58,7 +58,12 @@ the_post();
     <div class="pt-author-box">
       <?php echo get_avatar( get_the_author_meta( 'ID' ), 56, '', get_the_author(), [ 'class' => 'pt-author-box__avatar' ] ); ?>
       <div class="pt-author-box__body">
-        <span class="pt-author-box__name"><?php the_author(); ?></span>
+        <?php $author_url = get_the_author_meta( 'url' ); ?>
+        <?php if ( $author_url ) : ?>
+          <a href="<?php echo esc_url( $author_url ); ?>" class="pt-author-box__name"><?php the_author(); ?></a>
+        <?php else : ?>
+          <span class="pt-author-box__name"><?php the_author(); ?></span>
+        <?php endif; ?>
         <p class="pt-author-box__bio"><?php echo esc_html( $author_bio ); ?></p>
       </div>
     </div>
