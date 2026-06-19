@@ -54,6 +54,16 @@ the_post();
     </div>
     <?php endif; ?>
 
+    <?php $author_bio = get_the_author_meta( 'description' ); if ( $author_bio ) : ?>
+    <div class="pt-author-box">
+      <?php echo get_avatar( get_the_author_meta( 'ID' ), 56, '', get_the_author(), [ 'class' => 'pt-author-box__avatar' ] ); ?>
+      <div class="pt-author-box__body">
+        <span class="pt-author-box__name"><?php the_author(); ?></span>
+        <p class="pt-author-box__bio"><?php echo esc_html( $author_bio ); ?></p>
+      </div>
+    </div>
+    <?php endif; ?>
+
     <nav class="pt-single-nav" aria-label="<?php esc_attr_e( 'Navigation entre articles', 'painteau' ); ?>">
       <?php
       $prev = get_previous_post();

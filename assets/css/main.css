@@ -655,6 +655,31 @@ p:last-child { margin-bottom: 0; }
   border-top: 1px solid var(--border-dim);
 }
 
+/* Author box */
+.pt-author-box {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-md);
+  padding: var(--sp-md) var(--sp-lg);
+  background: var(--bg-surface);
+  border-left: 3px solid var(--accent);
+  margin: var(--sp-xl) 0;
+}
+
+.pt-author-box__avatar { border-radius: 50%; flex-shrink: 0; }
+
+.pt-author-box__body { display: flex; flex-direction: column; gap: var(--sp-xs); }
+
+.pt-author-box__name {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent-text);
+}
+.pt-author-box__name::before { content: '// '; opacity: .5; font-weight: 400; }
+
+.pt-author-box__bio { font-size: 13px; color: var(--fg-dim); line-height: 1.6; margin: 0; }
+
 /* Navigation prev/next */
 .pt-single-nav {
   display: grid;
