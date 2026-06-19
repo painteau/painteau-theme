@@ -574,6 +574,7 @@ p:last-child { margin-bottom: 0; }
 }
 
 .pt-single-content pre {
+  position: relative;
   background: var(--bg-surface);
   border: 1px solid var(--border);
   border-left: 3px solid var(--accent);
@@ -583,6 +584,30 @@ p:last-child { margin-bottom: 0; }
   font-size: 14px;
   line-height: 1.65;
 }
+
+.pt-copy-btn {
+  position: absolute;
+  top: var(--sp-sm);
+  right: var(--sp-sm);
+  background: var(--bg);
+  border: 1px solid var(--border-dim);
+  color: var(--fg-faint);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 2px 8px;
+  cursor: pointer;
+  border-radius: var(--radius);
+  line-height: 1.6;
+  transition: color var(--transition), border-color var(--transition), opacity var(--transition);
+  opacity: 0;
+}
+
+.pt-single-content pre:hover .pt-copy-btn,
+.pt-copy-btn:focus-visible { opacity: 1; }
+
+.pt-copy-btn:hover { color: var(--accent-text); border-color: var(--border); }
+
+.pt-copy-btn.is-copied { color: var(--accent-text); border-color: var(--accent-text); opacity: 1; }
 
 .pt-single-content pre code {
   background: none;

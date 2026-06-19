@@ -70,6 +70,34 @@
     });
   });
 
+  // ── Copy code buttons ─────────────────────────────────────────────────────
+  document.querySelectorAll('.pt-single-content pre').forEach((pre) => {
+    const btn = document.createElement('button');
+    btn.className = 'pt-copy-btn';
+    btn.setAttribute('aria-label', 'Copier le code');
+    btn.textContent = 'copy';
+    pre.appendChild(btn);
+
+    btn.addEventListener('click', async () => {
+      const code = pre.querySelector('code');
+      const text = code ? code.textContent : pre.textContent;
+      try {
+        await navigator.clipboard.writeText(text);
+        btn.textContent = 'copied!';
+        btn.setAttribute('aria-label', 'Code copié');
+        btn.classList.add('is-copied');
+        setTimeout(() => {
+          btn.textContent = 'copy';
+          btn.setAttribute('aria-label', 'Copier le code');
+          btn.classList.remove('is-copied');
+        }, 2000);
+      } catch (_) {
+        btn.textContent = 'error';
+        setTimeout(() => { btn.textContent = 'copy'; }, 2000);
+      }
+    });
+  });
+
   // ── Reveal on scroll ─────────────────────────────────────────────────────
   const revealEls = document.querySelectorAll('.reveal');
   if (reducedMotion) {
