@@ -12,7 +12,7 @@ if ( ! have_posts() ) {
 the_post();
 ?>
 
-<main class="pt-single-wrap">
+<main id="main-content" class="pt-single-wrap">
 <article class="pt-single" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
   <div class="pt-single__inner">
 

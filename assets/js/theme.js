@@ -2,6 +2,8 @@
 (function () {
   'use strict';
 
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   // ── Search toggle ────────────────────────────────────────────────────────
   const searchToggle = document.querySelector('.nav-search-toggle');
   const searchBar    = document.querySelector('.nav-search-bar');
@@ -12,15 +14,18 @@
       const hidden = searchBar.hasAttribute('hidden');
       if (hidden) {
         searchBar.removeAttribute('hidden');
+        searchToggle.setAttribute('aria-expanded', 'true');
         searchInput && searchInput.focus();
       } else {
         searchBar.setAttribute('hidden', '');
+        searchToggle.setAttribute('aria-expanded', 'false');
       }
     });
 
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && !searchBar.hasAttribute('hidden')) {
         searchBar.setAttribute('hidden', '');
+        searchToggle.setAttribute('aria-expanded', 'false');
         searchToggle.focus();
       }
     });
@@ -48,21 +53,32 @@
       e.stopPropagation();
       const open = dropdown.style.display === 'flex';
       dropdown.style.display = open ? '' : 'flex';
+      btn.setAttribute('aria-expanded', String(!open));
     });
 
     document.addEventListener('click', () => {
       dropdown.style.display = '';
+      btn.setAttribute('aria-expanded', 'false');
+    });
+
+    btn.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        dropdown.style.display = '';
+        btn.setAttribute('aria-expanded', 'false');
+        btn.focus();
+      }
     });
   });
 
   // ── Reveal on scroll ─────────────────────────────────────────────────────
   const revealEls = document.querySelectorAll('.reveal');
-  if (revealEls.length && 'IntersectionObserver' in window) {
+  if (reducedMotion) {
+    revealEls.forEach((el) => el.classList.add('is-visible'));
+  } else if (revealEls.length && 'IntersectionObserver' in window) {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry, i) => {
           if (entry.isIntersecting) {
-            // Staggered delay based on index
             const delay = (i % 5) * 60;
             setTimeout(() => entry.target.classList.add('is-visible'), delay);
             observer.unobserve(entry.target);

@@ -34,7 +34,7 @@ get_header();
         <span class="pt-list-item__time"><?php echo painteau_reading_time(); ?></span>
       </div>
       <div class="pt-list-item__content">
-        <h3 class="pt-list-item__title">
+        <h2 class="pt-list-item__title">
           <span class="pt-list-item__prefix" aria-hidden="true">// </span><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
         </h3>
         <?php if ( has_excerpt() ) : ?>

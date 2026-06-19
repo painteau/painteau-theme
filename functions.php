@@ -204,21 +204,23 @@ class painteau_Nav_Walker extends Walker_Nav_Menu {
         $item         = $data_object;
         $classes      = empty( $item->classes ) ? [] : (array) $item->classes;
         $active       = in_array( 'current-menu-item', $classes ) ? ' is-active' : '';
+        $is_current   = in_array( 'current-menu-item', $classes );
         $has_children = in_array( 'menu-item-has-children', $classes );
 
         if ( 0 === $depth ) {
             $output .= '<div class="nav__item-wrap' . ( $has_children ? ' nav__item-wrap--has-children' : '' ) . '">';
             if ( $has_children ) {
                 $output .= sprintf(
-                    '<button class="nav__item nav__item--parent%s" type="button">%s <span class="nav__caret">▾</span></button>',
+                    '<button class="nav__item nav__item--parent%s" type="button" aria-haspopup="true" aria-expanded="false">%s <span class="nav__caret" aria-hidden="true">▾</span></button>',
                     esc_attr( $active ),
                     esc_html( $item->title )
                 );
             } else {
                 $output .= sprintf(
-                    '<a href="%s" class="nav__item%s">%s</a>',
+                    '<a href="%s" class="nav__item%s"%s>%s</a>',
                     esc_url( $item->url ),
                     esc_attr( $active ),
+                    $is_current ? ' aria-current="page"' : '',
                     esc_html( $item->title )
                 );
             }
@@ -293,7 +295,7 @@ add_action( 'login_enqueue_scripts', function() {
         outline: none !important;
     }
     body.login .button-primary {
-        background: var(--accent) !important;
+        background: #15803d !important;
         border: none !important;
         border-radius: 2px !important;
         color: #fff !important;

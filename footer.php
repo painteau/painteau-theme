@@ -39,7 +39,7 @@
         $url = get_theme_mod( $key );
         if ( ! $url ) continue; ?>
         <a href="<?php echo esc_url( $url ); ?>" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="<?php echo esc_attr( $name ); ?>">
-          <?php echo $icon; ?>
+          <span aria-hidden="true"><?php echo $icon; ?></span>
         </a>
       <?php endforeach; ?>
     </div>

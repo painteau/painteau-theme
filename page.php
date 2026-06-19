@@ -16,7 +16,7 @@ the_post();
   <article class="pt-page-article" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
     <div class="pt-single__inner">
       <header class="pt-single-header">
-        <h1 class="pt-single-title"><span class="pt-single-title__prefix">// </span><?php the_title(); ?></h1>
+        <h1 class="pt-single-title"><span class="pt-single-title__prefix" aria-hidden="true">// </span><?php the_title(); ?></h1>
       </header>
       <hr class="pt-rule">
       <div class="pt-single-content entry-content">

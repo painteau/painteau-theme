@@ -49,7 +49,7 @@ $grid_offset     = ( $paged - 1 ) * $per_page + 1;
       <span class="pt-meta">[<?php echo get_the_date( 'Y-m-d' ); ?>]</span>
       <span class="pt-meta-sep">·</span>
       <span class="pt-meta"><?php echo painteau_reading_time(); ?></span>
-      <a href="<?php the_permalink(); ?>" class="pt-btn-read">→ lire</a>
+      <a href="<?php the_permalink(); ?>" class="pt-btn-read">→ lire<span class="screen-reader-text"> l'article « <?php echo esc_html( get_the_title() ); ?> »</span></a>
     </div>
   </div>
 </section>
