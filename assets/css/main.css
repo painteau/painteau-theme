@@ -993,6 +993,92 @@ p:last-child { margin-bottom: 0; }
 ::-webkit-scrollbar-thumb { background: var(--fg-faint); border-radius: 0; }
 ::-webkit-scrollbar-thumb:hover { background: var(--fg-dim); }
 
+/* ── CONTACT FORM 7 ────────────────────────────────────────────────────────── */
+.wpcf7 { margin-top: var(--sp-xl); }
+
+.pt-cf7-label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: var(--sp-md);
+}
+
+.pt-cf7-label__text {
+  font-size: 11px;
+  color: var(--accent-text);
+  letter-spacing: .04em;
+}
+
+.wpcf7 input[type=text],
+.wpcf7 input[type=email],
+.wpcf7 textarea {
+  display: block;
+  width: 100%;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-dim);
+  border-radius: var(--radius);
+  color: var(--fg);
+  font-family: var(--font-mono);
+  font-size: 14px;
+  padding: var(--sp-sm) var(--sp-md);
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition);
+  resize: vertical;
+}
+
+.wpcf7 input[type=text]:focus,
+.wpcf7 input[type=email]:focus,
+.wpcf7 textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent-dim);
+}
+
+.wpcf7 input[type=text]::placeholder,
+.wpcf7 input[type=email]::placeholder,
+.wpcf7 textarea::placeholder {
+  color: var(--fg-faint);
+  opacity: .7;
+}
+
+.wpcf7 textarea { min-height: 140px; }
+
+.wpcf7 input[type=submit] {
+  background: transparent;
+  border: 1px solid rgba(111,207,151,.4);
+  color: var(--accent-text);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  padding: 8px 20px;
+  cursor: pointer;
+  transition: background var(--transition), border-color var(--transition);
+  margin-top: var(--sp-sm);
+}
+
+.wpcf7 input[type=submit]:hover {
+  background: var(--accent-dim);
+  border-color: var(--accent);
+}
+
+.wpcf7-response-output {
+  margin-top: var(--sp-md) !important;
+  border-left: 3px solid var(--accent) !important;
+  border: none !important;
+  padding: var(--sp-sm) var(--sp-md) !important;
+  background: var(--accent-faint);
+  font-size: 13px;
+  color: var(--fg-dim);
+}
+
+.wpcf7-not-valid-tip {
+  font-size: 11px;
+  color: #b91c1c;
+  margin-top: 4px;
+}
+
+.wpcf7 .wpcf7-spinner {
+  margin-left: var(--sp-sm);
+}
+
 /* ── RESPONSIVE ────────────────────────────────────────────────────────────── */
 @media (max-width: 720px) {
   .site-header__actions { margin-left: auto; }
