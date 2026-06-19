@@ -1,0 +1,37 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Create release zip
+        run: |
+          mkdir -p dist
+          cd ..
+          zip -r "$GITHUB_WORKSPACE/dist/painteau-theme.zip" painteau-theme/ \
+            --exclude "painteau-theme/.git/*" \
+            --exclude "painteau-theme/.github/*" \
+            --exclude "painteau-theme/dist/*"
+          sha256sum "$GITHUB_WORKSPACE/dist/painteau-theme.zip" | awk '{print $1}' > "$GITHUB_WORKSPACE/dist/painteau-theme.zip.sha256"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            dist/painteau-theme.zip
+            dist/painteau-theme.zip.sha256
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
