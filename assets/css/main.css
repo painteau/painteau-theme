@@ -980,6 +980,7 @@ p:last-child { margin-bottom: 0; }
     order: 3;
     padding: var(--sp-sm) 0 var(--sp-md);
     border-top: 1px solid var(--border-dim);
+    background: var(--bg);
   }
   .site-nav.is-open .nav__list {
     flex-direction: column;
