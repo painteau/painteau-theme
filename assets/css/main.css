@@ -1017,29 +1017,25 @@ p:last-child { margin-bottom: 0; }
 .screen-reader-text { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(1px,1px,1px,1px); }
 
 /* ── LUCKYWP TABLE OF CONTENTS ─────────────────────────────────────────────── */
+/* Couleurs gérées par les options plugin (Settings > LuckyWP TOC).
+   Ce bloc ne gère que ce que le plugin ne peut pas : border-left accent,
+   préfixe //, police mono, toggle, numéros, sous-niveaux. */
+
 .lwptoc { margin: var(--sp-xl) 0; }
 
+/* Écrase la bordure fine du schéma transparent → bordure gauche accent */
 .lwptoc_i,
-.lwptoc-light .lwptoc_i,
-.lwptoc-white .lwptoc_i,
-.lwptoc-dark .lwptoc_i {
-  background: var(--bg-surface) !important;
-  color: var(--fg) !important;
+.lwptoc-transparent .lwptoc_i {
   border: none !important;
   border-left: 3px solid var(--accent) !important;
   padding: var(--sp-md) var(--sp-lg) !important;
 }
 
-.lwptoc-transparent .lwptoc_i {
-  border: 1px solid var(--border) !important;
-  border-left: 3px solid var(--accent) !important;
-}
-
+/* Titre "Sommaire" → style mono avec préfixe // */
 .lwptoc_title {
   font-family: var(--font-mono);
   font-size: 13px;
   font-weight: 500;
-  color: var(--fg-dim);
   letter-spacing: .02em;
 }
 
@@ -1052,36 +1048,29 @@ p:last-child { margin-bottom: 0; }
 
 .lwptoc_header { margin-bottom: var(--sp-sm) !important; }
 
+/* Toggle [afficher] / [masquer] */
 .lwptoc_toggle { font-size: 11px; margin-left: 6px; }
 
-.lwptoc_toggle::before { content: '['; color: var(--fg-faint); }
-.lwptoc_toggle::after  { content: ']'; color: var(--fg-faint); }
-
-.lwptoc_toggle_label,
-.lwptoc-light .lwptoc_i .lwptoc_toggle_label {
-  color: var(--fg-faint) !important;
+.lwptoc_toggle_label {
   font-family: var(--font-mono);
   font-size: 11px;
+  color: var(--fg-faint);
   border: none !important;
   box-shadow: none !important;
 }
 
-.lwptoc_toggle_label:hover,
-.lwptoc-light .lwptoc_i .lwptoc_toggle_label:hover {
-  color: var(--accent-text) !important;
-  text-decoration: none !important;
-  border-bottom: 1px dotted var(--accent-text) !important;
+.lwptoc_toggle_label:hover {
+  color: var(--accent-text);
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  border: none !important;
 }
 
+/* Items */
 .lwptoc_items { margin-top: var(--sp-xs); }
+.lwptoc_item  { font-size: 13px; line-height: 1.7; }
 
-.lwptoc_item { font-size: 13px; line-height: 1.6; }
-
-.lwptoc_i a,
-.lwptoc-light .lwptoc_i a,
-.lwptoc-white .lwptoc_i a,
-.lwptoc-dark .lwptoc_i a {
-  color: var(--accent-text) !important;
+.lwptoc_i a {
   font-family: var(--font-mono);
   font-size: 13px;
   text-decoration: none !important;
@@ -1089,26 +1078,13 @@ p:last-child { margin-bottom: 0; }
   box-shadow: none !important;
 }
 
-.lwptoc_i a:hover,
-.lwptoc-light .lwptoc_i a:hover,
-.lwptoc-white .lwptoc_i a:hover,
-.lwptoc-dark .lwptoc_i a:hover {
-  color: var(--accent-text) !important;
-  text-decoration: underline !important;
-  text-decoration-style: dotted !important;
-  border: none !important;
-}
+.lwptoc_i a:hover { text-decoration: underline !important; text-decoration-style: dotted !important; }
 
-.lwptoc_i a:visited,
-.lwptoc-light .lwptoc_items a:visited {
-  color: var(--accent-text) !important;
-  opacity: .75;
-}
-
+/* Numéros en vert */
 .lwptoc_item_number {
-  color: var(--accent);
-  font-size: 11px;
   font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--accent);
   margin-right: 4px;
   opacity: .8;
 }
